@@ -44,6 +44,12 @@ select {
   padding-top: 30px;
 }
 
+.home-page .page-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 30px);
+}
+
 .site-header {
   display: flex;
   align-items: center;
@@ -179,6 +185,21 @@ select option {
   align-items: center;
   min-height: auto;
   padding: 72px 0 80px;
+}
+
+.home-page main {
+  display: flex;
+  flex: 1;
+}
+
+.home-page .hero-section {
+  flex: 1;
+  width: 100%;
+  padding: clamp(42px, 7vh, 72px) 0 clamp(34px, 6vh, 64px);
+}
+
+.home-page .scanner-panel {
+  margin-top: 40px;
 }
 
 .hero-copy {
@@ -485,6 +506,14 @@ select option {
     gap: 26px;
     min-height: auto;
     padding-top: 54px;
+  }
+
+  .home-page main {
+    display: block;
+  }
+
+  .home-page .hero-section {
+    padding: 48px 0 40px;
   }
 
   .scanner-panel {
