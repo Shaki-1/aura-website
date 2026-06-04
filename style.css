@@ -59,7 +59,10 @@ select {
 
 .brand {
   display: inline-flex;
-  color: #8294eb;
+  color: transparent;
+  background: linear-gradient(110deg, #8fc2ff 0%, #8294eb 42%, #b59cff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
   font-size: 1.48rem;
   font-weight: 900;
   letter-spacing: 3px;
@@ -95,7 +98,8 @@ font-weight: 800;
   border-color: rgba(67, 141, 245, 0.62);
   color: #ffffff;
   box-shadow: 0 0 18px rgba(67, 141, 245, 0.24);
-  outline: none;
+  outline: 3px solid rgba(143, 194, 255, 0.42);
+  outline-offset: 3px;
 }
 
 .mode-pill {
@@ -195,11 +199,11 @@ select option {
 .home-page .hero-section {
   flex: 1;
   width: 100%;
-  padding: clamp(42px, 7vh, 72px) 0 clamp(34px, 6vh, 64px);
+  padding: clamp(34px, 5vh, 56px) 0 clamp(22px, 4vh, 44px);
 }
 
 .home-page .scanner-panel {
-  margin-top: 40px;
+  margin-top: 24px;
 }
 
 .hero-copy {
@@ -238,10 +242,10 @@ select option {
 }
 
 .hero-description {
-  max-width: 560px;
+  max-width: 620px;
   margin: 18px 0 0;
   color: var(--muted);
-  font-size: 1.02rem;
+  font-size: 1.06rem;
   line-height: 1.55;
 }
 
@@ -279,13 +283,50 @@ select option {
   background: rgba(8, 11, 25, 0.64);
 }
 
+.primary-button:hover,
+.primary-button:focus-visible,
+.secondary-button:hover,
+.secondary-button:focus-visible {
+  outline: 3px solid rgba(143, 194, 255, 0.46);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 1px rgba(143, 194, 255, 0.16), 0 16px 30px rgba(45, 122, 255, 0.22);
+}
+
+.home-insights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 680px;
+  margin-top: 28px;
+}
+
+.home-insights article {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.026);
+}
+
+.home-insights h2 {
+  margin: 0 0 6px;
+  color: #f7f8ff;
+  font-size: 0.88rem;
+}
+
+.home-insights p {
+  margin: 0;
+  color: #aeb8d2;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
 .scanner-panel {
   position: relative;
-  width: 250px;
+  width: min(100%, 290px);
   margin: 80px auto 0;
   border: 1px solid rgba(69, 134, 243, 0.18);
   border-radius: 16px;
-  padding: 24px 28px;
+  padding: 26px 28px;
   color: #dce5fb;
   background: rgba(17, 28, 54, 0.56);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.025);
@@ -315,6 +356,7 @@ select option {
   line-height: 1.45;
 }
 
+.scanner-panel h2,
 .scanner-panel h3 {
   margin: 0 0 16px;
   font-size: 1.05rem;
@@ -332,6 +374,26 @@ select option {
   color: #dce5fb;
   font-size: 0.95rem;
   line-height: 1.35;
+}
+
+.polished-list {
+  gap: 12px;
+}
+
+.polished-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.polished-list strong {
+  color: #9fcbff;
+  font-weight: 900;
+}
+
+.checkmark {
+  color: #65e6c8;
+  font-weight: 900;
 }
 
 .lower-section {
@@ -360,7 +422,8 @@ select option {
   background: rgba(255, 255, 255, 0.025);
 }
 
-.subtle-grid h2 {
+.subtle-grid h2,
+.subtle-grid h3 {
   margin: 0 0 8px;
   font-size: 1rem;
 }
@@ -377,6 +440,10 @@ select option {
   font-size: 0.95rem;
   letter-spacing: 0;
   text-align: center;
+}
+
+.home-footer {
+  padding-bottom: 22px;
 }
 
 .overlay-target {
@@ -503,7 +570,7 @@ select option {
 
   .hero-section {
     grid-template-columns: 1fr;
-    gap: 26px;
+    gap: 28px;
     min-height: auto;
     padding-top: 54px;
   }
@@ -513,26 +580,24 @@ select option {
   }
 
   .home-page .hero-section {
-    padding: 48px 0 40px;
+    padding: 46px 0 34px;
+  }
+
+  .hero-copy {
+    margin-left: 0;
+  }
+
+  .home-insights,
+  .subtle-grid,
+  .policy-grid {
+    grid-template-columns: 1fr;
   }
 
   .scanner-panel {
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
     margin: 0;
   }
-
-.subtle-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-@media (max-width: 560px) {
-  .hero-title {
-    font-size: 3.2rem;
-  }
-}
 
   .hero-buttons {
     flex-direction: column;
@@ -541,5 +606,35 @@ select option {
   .primary-button,
   .secondary-button {
     width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-shell {
+    width: min(100% - 24px, 1260px);
+    padding-top: 22px;
+  }
+
+  .home-page .page-shell {
+    min-height: calc(100vh - 22px);
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
